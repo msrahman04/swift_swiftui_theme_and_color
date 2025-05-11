@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 // Define available themes
 enum ThemeType: String, CaseIterable {
     case light, dark, system, custom
@@ -39,12 +40,12 @@ struct AppTheme {
     
     // MARK: - Predefined Themes
     static let light = AppTheme(
-        background: .primaryBackground,
-        secondaryBackground: .secondaryBackground,
-        accent: .accentPrimary,
-        secondaryAccent: .accentSecondary,
-        primaryText: .textPrimary,
-        secondaryText: .textSecondary,
+        background: Color.AppColors.primaryBackground,
+        secondaryBackground: Color.AppColors.secondaryBackground,
+        accent: Color.AppColors.accentPrimary,
+        secondaryAccent: Color.AppColors.accentSecondary,
+        primaryText: Color.AppColors.textPrimary,
+        secondaryText: Color.AppColors.textSecondary,
         
         titleFont: .system(.largeTitle, design: .rounded, weight: .bold),
         headingFont: .system(.title, design: .rounded, weight: .semibold),
@@ -60,6 +61,44 @@ struct AppTheme {
     )
     
     // You can define other themes similarly
-    static let dark = AppTheme(/* dark theme values */)
-    static let custom = AppTheme(/* custom theme values */)
+    static let dark = AppTheme(
+        background: Color.AppColors.primaryBackground,
+        secondaryBackground: Color.AppColors.secondaryBackground,
+        accent: Color.AppColors.accentPrimary,
+        secondaryAccent: Color.AppColors.accentSecondary,
+        primaryText: Color.AppColors.textPrimary,
+        secondaryText: Color.AppColors.textSecondary,
+        
+        titleFont: .system(.largeTitle, design: .rounded, weight: .bold),
+        headingFont: .system(.title, design: .rounded, weight: .semibold),
+        bodyFont: .system(.body),
+        captionFont: .system(.caption),
+        
+        standardPadding: 16,
+        smallPadding: 8,
+        largePadding: 24,
+        
+        cornerRadius: 12,
+        buttonCornerRadius: 8
+    )
+    static let custom = AppTheme(
+        background: Color.AppColors.primaryBackground,
+        secondaryBackground: Color.AppColors.secondaryBackground,
+        accent: Color.AppColors.accentPrimary,
+        secondaryAccent: Color.AppColors.accentSecondary,
+        primaryText: Color.AppColors.textPrimary,
+        secondaryText: Color.AppColors.textSecondary,
+        
+        titleFont: .system(.largeTitle, design: .rounded, weight: .bold),
+        headingFont: .system(.title, design: .rounded, weight: .semibold),
+        bodyFont: .system(.body),
+        captionFont: .system(.caption),
+        
+        standardPadding: 16,
+        smallPadding: 8,
+        largePadding: 24,
+        
+        cornerRadius: 12,
+        buttonCornerRadius: 8
+    )
 }
