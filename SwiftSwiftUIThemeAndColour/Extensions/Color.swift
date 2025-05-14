@@ -9,17 +9,33 @@ import SwiftUI
 
 extension Color {
     // App colors
-    enum AppColors {
-        static let primaryBackground = Color("primaryBackground")
-        static let secondaryBackground = Color("secondaryBackground")
-        static let accentPrimary = Color("accentPrimary")
-        static let accentSecondary = Color("accentSecondary")
-        static let textPrimary = Color("textPrimary")
-        static let textSecondary = Color("textSecondary")
+    import SwiftUI
+
+extension Color {
+        // MARK: - Brand Colors
+        static let richBlackBrand = Color("ColorRichBlackBrand")
         
-        // Additional color variations as needed
-        static let success = Color("success")
-        static let warning = Color("warning")
-        static let error = Color("error")
-    }
+        // MARK: - Neutral Colors
+        static let primaryBackground = Color("ColorPrimaryBackground")
+        static let primarySurface = Color("ColorPrimarySurface")
+        static let primaryBorder = Color("ColorPrimaryBorder")
+        static let disabled = Color("ColorDisabled")
+        
+        // MARK: - Text Colors
+        static let textPrimary = Color("ColorTextPrimary")
+        static let textSecondary = Color("ColorTextSecondary")
+        static let textTertiary = Color("ColorTextTertiary")
+        static let textOnPrimary = Color("ColorTextOnPrimary")
+        
+        // MARK: - Accent Colors
+        static let accentBlue = Color("ColorAccentBlue")
+        static let accentBurgundy = Color("ColorAccentBurgundy")
+        
+        // MARK: - Functional Colors
+        static let success = Color("ColorSuccess")
+        static let warning = Color("ColorWarning")
+        static let error = Color("ColorError")
+        static let info = Color("ColorInfo")
+}
+
 }
