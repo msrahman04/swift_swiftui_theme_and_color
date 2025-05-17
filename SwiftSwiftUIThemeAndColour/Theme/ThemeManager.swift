@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+// MARK: - Theme Manager
 class ThemeManager: ObservableObject {
     @Published var currentTheme: AppTheme
     @Published var themeType: ThemeType {
@@ -24,6 +25,10 @@ class ThemeManager: ObservableObject {
         self.currentTheme = AppTheme.light
         
         updateTheme()
+        // If using system theme, listen for changes
+        if themeType == .system {
+            setupSystemThemeListener()
+        }
     }
     
     func updateTheme() {
@@ -36,8 +41,19 @@ class ThemeManager: ObservableObject {
             // Use system setting
             let isDark = UITraitCollection.current.userInterfaceStyle == .dark
             currentTheme = isDark ? AppTheme.dark : AppTheme.light
-        case .custom:
-            currentTheme = AppTheme.custom
+        }
+    }
+    
+    private func setupSystemThemeListener() {
+        // Observe changes to the system appearance
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            if self?.themeType == .system {
+                self?.updateTheme()
+            }
         }
     }
 }

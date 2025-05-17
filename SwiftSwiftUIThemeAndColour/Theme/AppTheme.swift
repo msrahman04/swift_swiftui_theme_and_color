@@ -66,30 +66,33 @@ struct AppTheme {
     
     // MARK: - Predefined Themes
     static let light = AppTheme(
+        
+        //MARK: I we use want to use without color extention the whe have to create an color Asset with name "PrimaryBackgroundColor"
+        //and if we call it like this  "Color.primaryBackground" its working fine but we want to handle using extension
         // Base colors
         mainBackground: Color.primaryBackground,
-        surfaceBackground: Color.primarySurface,
-        borderColor: Color.primaryBorder,
-        disabledColor: Color.disabled,
+        surfaceBackground: Color.AppColors.primarySurfaceColor,
+        borderColor: Color.AppColors.primaryBorderColor,
+        disabledColor: Color.AppColors.disabledColor,
         
         // Text colors
-        textPrimaryColor: Color.textPrimary,
-        textSecondaryColor: Color.textSecondary,
-        textTertiaryColor: Color.textTertiary,
-        textOnPrimaryColor: Color.textOnPrimary,
+        textPrimaryColor: Color.AppColors.textPrimaryColor,
+        textSecondaryColor: Color.AppColors.textSecondaryColor,
+        textTertiaryColor: Color.AppColors.textTertiaryColor,
+        textOnPrimaryColor: Color.AppColors.textOnPrimaryColor,
         
         // Brand colors
-        brandColor: Color.richBlackBrand,
+        brandColor: Color.AppColors.richBlackBrandColor,
         
         // Accent colors
-        primaryAccentColor: Color.accentBlue,
-        secondaryAccentColor: Color.accentBurgundy,
+        primaryAccentColor: Color.AppColors.accentBlueColor,
+        secondaryAccentColor: Color.AppColors.accentBurgundyColor,
         
         // Functional colors
-        successColor: Color.success,
-        warningColor: Color.warning,
-        errorColor: Color.error,
-        infoColor: Color.info,
+        successColor: Color.AppColors.successColor,
+        warningColor: Color.AppColors.warningColor,
+        errorColor: Color.AppColors.errorColor,
+        infoColor: Color.AppColors.infoColor,
         
         // Typography
         titleFont: .system(.largeTitle, design: .default, weight: .bold),
@@ -143,8 +146,7 @@ struct AppTheme {
         errorColor: Color.AppColors.errorColor,
         infoColor: Color.AppColors.infoColor,
         
-        //MARK: I we use want to use without color extention the whe have to create an color Asset with name "PrimaryBackgroundColor"
-        //and if we call it like this  "Color.primaryBackground" its working fine but we want to handle using extension
+       
         
         // Typography - may want different fonts for dark mode
         titleFont: .system(.largeTitle, design: .default, weight: .bold),
@@ -192,55 +194,7 @@ extension View {
     }
 }
 
-// MARK: - Theme Manager
-class ThemeManager: ObservableObject {
-    @Published var currentTheme: AppTheme
-    @Published var themeType: ThemeType {
-        didSet {
-            UserDefaults.standard.set(themeType.rawValue, forKey: "selectedTheme")
-            updateTheme()
-        }
-    }
-    
-    init() {
-        // Load saved theme preference
-        let savedTheme = UserDefaults.standard.string(forKey: "selectedTheme") ?? ThemeType.system.rawValue
-        self.themeType = ThemeType(rawValue: savedTheme) ?? .system
-        self.currentTheme = AppTheme.light
-        
-        updateTheme()
-        // If using system theme, listen for changes
-        if themeType == .system {
-            setupSystemThemeListener()
-        }
-    }
-    
-    func updateTheme() {
-        switch themeType {
-        case .light:
-            currentTheme = AppTheme.light
-        case .dark:
-            currentTheme = AppTheme.dark
-        case .system:
-            // Use system setting
-            let isDark = UITraitCollection.current.userInterfaceStyle == .dark
-            currentTheme = isDark ? AppTheme.dark : AppTheme.light
-        }
-    }
-    
-    private func setupSystemThemeListener() {
-        // Observe changes to the system appearance
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.didBecomeActiveNotification,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            if self?.themeType == .system {
-                self?.updateTheme()
-            }
-        }
-    }
-}
+
 
 // MARK: - View Style Extensions
 
