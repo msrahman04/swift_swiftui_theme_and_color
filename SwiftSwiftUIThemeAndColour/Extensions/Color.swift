@@ -8,34 +8,31 @@
 import SwiftUI
 
 extension Color {
-    // App colors
-    import SwiftUI
-
-extension Color {
+    
+    enum AppColors{
         // MARK: - Brand Colors
-        static let richBlackBrand = Color("ColorRichBlackBrand")
+        static let richBlackBrandColor = Color("RichBlackBrandColor")
         
         // MARK: - Neutral Colors
-        static let primaryBackground = Color("ColorPrimaryBackground")
-        static let primarySurface = Color("ColorPrimarySurface")
-        static let primaryBorder = Color("ColorPrimaryBorder")
-        static let disabled = Color("ColorDisabled")
+        static let primaryBackgroundColor = Color("PrimaryBackgroundColor")
+        static let primarySurfaceColor = Color("PrimarySurfaceColor")
+        static let primaryBorderColor = Color("ColorPrimaryBorder")
+        static let disabledColor = Color("DisabledColor")
         
         // MARK: - Text Colors
-        static let textPrimary = Color("ColorTextPrimary")
-        static let textSecondary = Color("ColorTextSecondary")
-        static let textTertiary = Color("ColorTextTertiary")
-        static let textOnPrimary = Color("ColorTextOnPrimary")
+        static let textPrimaryColor = Color("TextPrimaryColor")
+        static let textSecondaryColor = Color("TextSecondaryColor")
+        static let textTertiaryColor = Color("TextTertiaryColor")
+        static let textOnPrimaryColor = Color("TextOnPrimaryColor")
         
         // MARK: - Accent Colors
-        static let accentBlue = Color("ColorAccentBlue")
-        static let accentBurgundy = Color("ColorAccentBurgundy")
+        static let accentBlueColor = Color("AccentBlueColor")
+        static let accentBurgundyColor = Color("AccentBurgundyColor")
         
         // MARK: - Functional Colors
-        static let success = Color("ColorSuccess")
-        static let warning = Color("ColorWarning")
-        static let error = Color("ColorError")
-        static let info = Color("ColorInfo")
-}
-
+        static let successColor = Color("SuccessColor")
+        static let warningColor = Color("WarningColor")
+        static let errorColor = Color("ErrorColor")
+        static let infoColor = Color("InfoColor")
+    }
 }
